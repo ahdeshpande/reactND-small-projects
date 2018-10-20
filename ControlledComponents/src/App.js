@@ -1,32 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import ItemsList from './components/ItemsList';
-import DeleteItem from './components/DeleteItem';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import ItemsList from "./components/ItemsList";
+import AddItem from "./components/AddItem";
+import DeleteItem from "./components/DeleteItem";
 
 class App extends React.Component {
   state = {
-    value: '',
-    items: [],
+    items: []
   };
 
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
-
-  addItem = event => {
+  addItem = (event, value) => {
     event.preventDefault();
     this.setState(oldState => ({
-      items: [...oldState.items, this.state.value],
+      items: [...oldState.items, value]
     }));
   };
 
   deleteLastItem = event => {
     this.setState(prevState => ({ items: this.state.items.slice(0, -1) }));
-  };
-
-  inputIsEmpty = () => {
-    return this.state.value === '';
   };
 
   noItemsFound = () => {
@@ -41,19 +33,15 @@ class App extends React.Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <h2>Shopping List</h2>
-        <form onSubmit={this.addItem}>
-          <input
-            type="text"
-            placeholder="Enter New Item"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-          <button disabled={this.inputIsEmpty()}>Add</button>
-        </form>
 
-        <DeleteItem deleteLastItem={this.deleteLastItem} noItemsFound={this.noItemsFound}/>
+        <AddItem addItem={this.addItem} />
 
-        <ItemsList items={this.state.items}/>
+        <DeleteItem
+          deleteLastItem={this.deleteLastItem}
+          noItemsFound={this.noItemsFound}
+        />
+
+        <ItemsList items={this.state.items} />
       </div>
     );
   }
