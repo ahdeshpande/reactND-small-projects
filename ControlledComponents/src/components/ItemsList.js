@@ -1,4 +1,5 @@
 import React from "react";
+import Item from "./Item";
 
 const ItemsList = props => {
   return (
@@ -6,7 +7,7 @@ const ItemsList = props => {
       <p className="items">Items</p>
       <ol className="item-list">
         {props.items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <Item index={index} item={item} />
         ))}
       </ol>
     </div>
