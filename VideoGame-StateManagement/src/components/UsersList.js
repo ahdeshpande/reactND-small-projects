@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import User from "./User";
 
 export default class UsersList extends React.Component {
@@ -37,3 +38,7 @@ export default class UsersList extends React.Component {
     }
 
 }
+
+UsersList.propTypes = {
+    userlist: PropTypes.array.isRequired
+};
