@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ItemsList from './components/ItemsList';
+import DeleteItem from './components/DeleteItem';
 
 class App extends React.Component {
   state = {
@@ -50,9 +51,7 @@ class App extends React.Component {
           <button disabled={this.inputIsEmpty()}>Add</button>
         </form>
 
-        <button onClick={this.deleteLastItem} disabled={this.noItemsFound()}>
-          Delete Last Item
-        </button>
+        <DeleteItem deleteLastItem={this.deleteLastItem} noItemsFound={this.noItemsFound}/>
 
         <ItemsList items={this.state.items}/>
       </div>
