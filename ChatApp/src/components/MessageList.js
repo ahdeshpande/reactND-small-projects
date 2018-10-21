@@ -4,7 +4,8 @@ import Message from './Message';
 const MessageList = props => {
     return <ul className="message-list">
         {props.messages.map((message, index) => (
-            <Message message={message} username={props.username} key={index}/>
+            <Message message={message} username={props.username} key={index}
+                     index={index}/>
         ))}
     </ul>
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Message = props => {
     return <li
-        key={index}
+        key={props.index}
         className={
             props.message.username === props.username ? 'message sender' : 'message recipient'
         }
